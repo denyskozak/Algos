@@ -1,14 +1,15 @@
 // Recursive fast sorting
 
-const fastSort = array => {
+// O(n * log n)
+const quickSort = array => {
   if (array.length < 2 ) return array;
 
   const head  = array.shift();
   const lesser = array.reduce((store, el) => el < head ? [el, ...store] : store, []);
   const greater = array.reduce((store, el) => el > head ? [el, ...store] : store, []);
 
-  return [...fastSort(lesser), head, ...fastSort(greater)];
+  return [...quickSort(lesser), head, ...quickSort(greater)];
 }
 
-module.exports = fastSort;
+module.exports = quickSort;
 
